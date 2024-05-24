@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export default function FilterChips(){
     return (
-        <div className="flex space-x-2 justify-center py-4">
+        <div className="flex space-x-2 justify-center pt-2 pb-4">
             <Button variant="outline">
                 Filter
             </Button>

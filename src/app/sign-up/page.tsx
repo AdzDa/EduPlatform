@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-export default function SignIn(){
+export default function SignUp(){
     return (
         <div className="flex">
             <div className="w-1/2">
