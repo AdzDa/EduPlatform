@@ -4,6 +4,7 @@ import Footer from "@/own-component/Footer";
 import CourseCard from "@/own-component/CourseCard";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react"
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -150,9 +151,11 @@ export default function Home() {
         </div>
 
         <div className="py-3 flex justify-center">
-          <Button className="px-8">
-            Explore More
-          </Button>
+          <Link href='/category-list'>
+            <Button className="px-8">
+              Explore More
+            </Button>
+          </Link>
         </div>
       </div>
 
@@ -247,9 +250,11 @@ export default function Home() {
               EduHub provide a platform for educators around the world to teach what you interested in and start making a difference today. Your knowledge might inspire and transform others live. Sign up now and embark on a rewarding journey with us.
             </p>
 
-            <Button className="bg-white text-color8">
-              Start Teaching
-            </Button>
+            <Link href='/become-trainer/trainer-details'>
+              <Button className="bg-white text-color8">
+                Start Teaching
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

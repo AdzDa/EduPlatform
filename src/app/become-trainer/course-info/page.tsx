@@ -9,6 +9,7 @@ import {
     SelectValue,
   } from "@/components/ui/select"
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function CourseInfoInput(){
     return (
@@ -168,13 +169,17 @@ export default function CourseInfoInput(){
             </div>
 
             <div className="flex justify-end space-x-2">
-                <Button className="w-48">
-                    Previous
-                </Button>
+                <Link href='/become-trainer/trainer-details'>
+                    <Button className="w-48">
+                        Previous
+                    </Button>
+                </Link>
 
-                <Button className="w-48">
-                    Submit
-                </Button>
+                <Link href='/'>
+                    <Button className="w-48">
+                        Submit
+                    </Button>
+                </Link>
             </div>
         </div>
     );

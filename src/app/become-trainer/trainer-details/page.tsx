@@ -1,6 +1,7 @@
 import { ChevronRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function TrainerDetailsInput(){
     return (
@@ -76,9 +77,11 @@ export default function TrainerDetailsInput(){
             </div>
 
             <div className="flex justify-end space-x-2">
-                <Button className="w-48">
-                    Next
-                </Button>
+                <Link href='/become-trainer/course-info'>
+                    <Button className="w-48">
+                        Next
+                    </Button>
+                </Link>
             </div>
         </div>
     );

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function SignUp(){
     return (
@@ -73,17 +74,19 @@ export default function SignUp(){
                     </div>
 
                     <div>
-                        <Button
-                        type="submit"
-                        className="flex w-full justify-center rounded-md bg-color1 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-color1-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-color1">
-                            Sign Up
-                        </Button>
+                        <Link href='/sign-in'>
+                            <Button
+                            type="submit"
+                            className="flex w-full justify-center rounded-md bg-color1 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-color1-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-color1">
+                                Sign Up
+                            </Button>
+                        </Link>
                     </div>
                 </form>
 
                 <p className="mt-10 text-center text-sm text-gray-500">
                     Already have an account?{' '}
-                    <a href="#" className="font-semibold leading-6 text-blue-600 hover:text-blue-500">
+                    <a href="/sign-in" className="font-semibold leading-6 text-blue-600 hover:text-blue-500">
                     Sign in here
                     </a>
                 </p>

@@ -5,6 +5,7 @@ import InputSearch from "@/own-component/InputSearch";
 import NavBar from "@/own-component/NavBar";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 export default function CategoryList(){
     return (
@@ -140,9 +141,11 @@ export default function CategoryList(){
                             See more
                         </p>
 
-                        <Button variant="outline" size="icon">
-                            <ChevronRight className="h-4 w-4" />
-                        </Button>
+                        <Link href='/course-list'>
+                            <Button variant="outline" size="icon">
+                                <ChevronRight className="h-4 w-4" />
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             

@@ -70,7 +70,7 @@ export default function SignIn(){
 
                 <p className="mt-10 text-center text-sm text-gray-500">
                     Not a member?{' '}
-                    <a href="#" className="font-semibold leading-6 text-blue-600 hover:text-blue-500">
+                    <a href="/sign-up" className="font-semibold leading-6 text-blue-600 hover:text-blue-500">
                     Create an account here
                     </a>
                 </p>

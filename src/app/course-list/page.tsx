@@ -7,6 +7,7 @@ import CourseCard from "@/own-component/CourseCard";
 import { Pagination } from "@/components/ui/pagination";
 import Filter from "@/own-component/Filter";
 import { SortBy } from "@/own-component/SortBy";
+import Link from "next/link";
 
 export default function CourseFull(){
     return (
@@ -30,7 +31,9 @@ export default function CourseFull(){
                         <SortBy/>
                     </div>
                     
-                    <CourseList/>
+                    <Link href='/course-page'>
+                        <CourseList/>
+                    </Link>
                     <CourseList/>
                     <CourseList/>
                     <CourseList/>
