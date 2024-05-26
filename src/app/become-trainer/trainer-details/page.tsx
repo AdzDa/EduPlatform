@@ -71,7 +71,7 @@ export default function TrainerDetailsInput(){
                             Name
                         </h2>
 
-                        <Input type="text" placeholder="eg: Web Development" />
+                        <Input disabled type="text" placeholder="eg: Web Development" />
                     </div>
                 </div>
             </div>

@@ -250,7 +250,7 @@ export default function Home() {
               EduHub provide a platform for educators around the world to teach what you interested in and start making a difference today. Your knowledge might inspire and transform others live. Sign up now and embark on a rewarding journey with us.
             </p>
 
-            <Link href='/become-trainer/trainer-details'>
+            <Link href='/trainer-dashboard'>
               <Button className="bg-white text-color8">
                 Start Teaching
               </Button>
