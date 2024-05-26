@@ -24,7 +24,7 @@ export default function TrainerDashboard(){
 
     const getCourseFromDB = async () => {
 		const { data: courseDetails, error } = await supabase
-			.from('courses')
+			.from('details')
 			.select();
 
 		if (error) {
@@ -130,7 +130,37 @@ export default function TrainerDashboard(){
                             </div>
 
                             <TabsContent value="published">
-                                <div className="bg-blue-100 grid grid-cols-4 gap-2 mx-5">
+                                <ul className="grid grid-cols-3 gap-4 flex flex-col">
+                                    {courseList.map((detail, index) =>(
+                                        <li key={index} className="hover:border-gray-400, hover:border-2">
+                                            <div className="h-2/3 flex justify-center items-center">
+                                                <img src="course-thumbnail.png" alt="" className="w-full"/>
+                                            </div>
+
+                                            <div className="flex p-2">
+                                                <div className="flex justify-center items-center w-1/3 p-2">
+                                                    <img src="profile-pic.png" alt="" className="w-1/2"/>
+                                                </div>
+
+                                                <div className="p-2">
+                                                    <p className="font-bold text-lg">
+                                                        {detail.title}
+                                                    </p>
+
+                                                    <p className="text-sm text-gray-400">
+                                                        By {detail.trainer}
+                                                    </p>
+
+                                                    <p className="font-bold text-color4">
+                                                        RM {detail.price}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                {/* <div className="bg-blue-100 grid grid-cols-4 gap-2 mx-5">
                                     {courseList.map((detail, index) => (
                                         <div 
                                         key={index}
@@ -147,7 +177,7 @@ export default function TrainerDashboard(){
                                             </p>
                                         </div>
                                     ))}
-                                </div>
+                                </div> */}
                             </TabsContent>
                         </Tabs>
                 </div>
