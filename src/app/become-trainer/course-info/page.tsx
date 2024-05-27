@@ -1,31 +1,31 @@
 'use client';
-import { ChevronRight } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { ChevronRight } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-  } from "@/components/ui/select"
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from '@/components/ui/select';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { createSupabaseClient } from '@/utils/supabase/client';
 
-export default function CourseInfoInput(){
-    const supabase = createSupabaseClient();
+export default function CourseInfoInput() {
+	const supabase = createSupabaseClient();
 
-    const [newCourse, setNewCourse] = useState({
+	const [newCourse, setNewCourse] = useState({
 		trainer: '',
-        title: '',
-        price: '',
-        introduction:'',
-        requirements:'',
-        category:'',
-        level: '',
+		title: '',
+		price: '',
+		introduction: '',
+		requirements: '',
+		category: '',
+		level: '',
 	});
 
 	const [courseList, setCourseList] = useState<any[]>([]); // State to store the list of courses
@@ -34,32 +34,32 @@ export default function CourseInfoInput(){
 		// push data(new course) to supabase
 		const { error } = await supabase.from('details').insert({
 			trainer: newCourse.trainer,
-            title: newCourse.title,
-            price: newCourse.price,
-            introduction:newCourse.introduction,
-            requirements:newCourse.requirements,       
-            category:newCourse.category,
-            level: newCourse.level, 
+			title: newCourse.title,
+			price: newCourse.price,
+			introduction: newCourse.introduction,
+			requirements: newCourse.requirements,
+			category: newCourse.category,
+			level: newCourse.level,
 		});
 
 		if (error) {
 			console.log(error);
 		} else {
 			setNewCourse({
-                trainer: '',
-                title: '',
-                price: '',
-                introduction:'',
-                requirements:'',
-                category:'',
-                level: '',
+				trainer: '',
+				title: '',
+				price: '',
+				introduction: '',
+				requirements: '',
+				category: '',
+				level: '',
 			});
 			// pulling the new updated database
 			getCourseFromDB();
 		}
 	};
 
-    const getCourseFromDB = async () => {
+	const getCourseFromDB = async () => {
 		const { data: courseDetails, error } = await supabase
 			.from('details')
 			.select();
@@ -69,281 +69,234 @@ export default function CourseInfoInput(){
 		} else {
 			setCourseList(courseDetails);
 		}
-    };
+	};
 
 	useEffect(() => {
 		getCourseFromDB();
 	}, []);
 
-    return (
-        <div className="flex flex-col p-8">
-            <div className="flex flex-col">
-                <h1 className="font-bold text-2xl">
-                    Create New Course
-                </h1>
+	return (
+		<div className="flex flex-col p-8">
+			<div className="flex flex-col">
+				<h1 className="font-bold text-2xl">Create New Course</h1>
 
-                <div className="items-center flex py-4 space-x-4">
-                    <div className="flex items-center space-x-2">
-                        <div className="flex items-center justify-center w-8 h-8 bg-color1 text-white rounded-full">
-                            1
-                        </div>
+				<div className="items-center flex py-4 space-x-4">
+					<div className="flex items-center space-x-2">
+						<div className="flex items-center justify-center w-8 h-8 bg-color1 text-white rounded-full">
+							1
+						</div>
 
-                        <h3 className="text-color1 font-bold">
-                            Trainer Details
-                        </h3>
-                    </div>
+						<h3 className="text-color1 font-bold">Trainer Details</h3>
+					</div>
 
-                    <ChevronRight className="h-4 w-4 text-color1" />
+					<ChevronRight className="h-4 w-4 text-color1" />
 
-                    <div className="flex items-center space-x-2">
-                        <div className="flex items-center justify-center w-8 h-8 bg-color1 text-white rounded-full">
-                            2
-                        </div>
+					<div className="flex items-center space-x-2">
+						<div className="flex items-center justify-center w-8 h-8 bg-color1 text-white rounded-full">
+							2
+						</div>
 
-                        <h3 className="text-color1 font-bold">
-                            Course Information
-                        </h3>
-                    </div>
+						<h3 className="text-color1 font-bold">Course Information</h3>
+					</div>
 
-                    <ChevronRight className="h-4 w-4 text-gray-200" />
+					<ChevronRight className="h-4 w-4 text-gray-200" />
 
-                    <div className="flex items-center space-x-2">
-                        <div className="flex items-center justify-center w-8 h-8 bg-gray-200 text-white rounded-full">
-                            3
-                        </div>
+					<div className="flex items-center space-x-2">
+						<div className="flex items-center justify-center w-8 h-8 bg-gray-200 text-white rounded-full">
+							3
+						</div>
 
-                        <h3 className="text-gray-200">
-                            Course Materials
-                        </h3>
-                    </div>
+						<h3 className="text-gray-200">Course Materials</h3>
+					</div>
 
-                    <ChevronRight className="h-4 w-4 text-gray-200" />
+					<ChevronRight className="h-4 w-4 text-gray-200" />
 
-                    <div className="flex items-center space-x-2">
-                        <div className="flex items-center justify-center w-8 h-8 bg-gray-200 text-white rounded-full">
-                            3
-                        </div>
+					<div className="flex items-center space-x-2">
+						<div className="flex items-center justify-center w-8 h-8 bg-gray-200 text-white rounded-full">
+							3
+						</div>
 
-                        <h3 className="text-gray-200">
-                            Publish
-                        </h3>
-                    </div>
-                </div>
-            </div>
-            
-            <div className="flex py-8">
-                <div className="w-1/2 flex flex-col space-y-8">
-                    <div className="">
-                        <h1 className="font-bold text-2xl">
-                            Trainer Details
-                        </h1>
+						<h3 className="text-gray-200">Publish</h3>
+					</div>
+				</div>
+			</div>
 
-                        <div className="flex flex-col pt-6 px-4">
-                            <h2 className="font-bold text-lg">
-                                Name
-                            </h2>
+			<div className="flex py-8">
+				<div className="w-1/2 flex flex-col space-y-8">
+					<div className="">
+						<h1 className="font-bold text-2xl">Trainer Details</h1>
 
-                            <Input 
-                            type="text" 
-                            placeholder="eg: John Doe" 
-                            value={newCourse.trainer}
-                            onChange={(e) =>
-                                setNewCourse({
-                                    ...newCourse, //copying previous data
-                                    trainer: e.target.value,
-                                })
-                            }
-                            />
-                        </div>
-                    </div>
+						<div className="flex flex-col pt-6 px-4">
+							<h2 className="font-bold text-lg">Name</h2>
 
-                    <div className="">
-                        <h1 className="font-bold text-2xl">
-                            Course Information
-                        </h1>
+							<Input
+								type="text"
+								placeholder="eg: John Doe"
+								value={newCourse.trainer}
+								onChange={(e) =>
+									setNewCourse({
+										...newCourse, //copying previous data
+										trainer: e.target.value,
+									})
+								}
+							/>
+						</div>
+					</div>
 
-                        <div className="flex flex-col pt-6 px-4">
-                            <h2 className="font-bold text-lg">
-                                Title
-                            </h2>
+					<div className="">
+						<h1 className="font-bold text-2xl">Course Information</h1>
 
-                            <Input 
-                            type="text" 
-                            placeholder="eg: Web Development" 
-                            value={newCourse.title}
-                            onChange={(e) =>
-                                setNewCourse({
-                                    ...newCourse, //copying previous data
-                                    title: e.target.value,
-                                })
-                            }
-                            />
-                        </div>
+						<div className="flex flex-col pt-6 px-4">
+							<h2 className="font-bold text-lg">Title</h2>
 
-                        <div className="flex flex-col pt-6 px-4">
-                            <h2 className="font-bold text-lg">
-                                Price (RM)
-                            </h2>
+							<Input
+								type="text"
+								placeholder="eg: Web Development"
+								value={newCourse.title}
+								onChange={(e) =>
+									setNewCourse({
+										...newCourse, //copying previous data
+										title: e.target.value,
+									})
+								}
+							/>
+						</div>
 
-                            <Input 
-                            type="number" 
-                            placeholder="Enter price here" 
-                            value={newCourse.price}
-                            onChange={(e) =>
-                                setNewCourse({
-                                    ...newCourse, //copying previous data
-                                    price: e.target.value,
-                                })
-                            }
-                            />
-                        </div>
+						<div className="flex flex-col pt-6 px-4">
+							<h2 className="font-bold text-lg">Price (RM)</h2>
 
-                        <div className="flex">
-                            <div className="w-1/2 flex flex-col pt-6 px-4">
-                                <h2 className="font-bold text-lg">
-                                    Category
-                                </h2>
+							<Input
+								type="number"
+								placeholder="Enter price here"
+								value={newCourse.price}
+								onChange={(e) =>
+									setNewCourse({
+										...newCourse, //copying previous data
+										price: e.target.value,
+									})
+								}
+							/>
+						</div>
 
-                                <Select>
-                                    <SelectTrigger className="">
-                                        <SelectValue 
-                                        placeholder="Select here" 
-                                        // value={newCourse.category}
-                                        // onChange={(e) =>
-                                        //     setNewCourse({
-                                        //         ...newCourse, //copying previous data
-                                        //         category: e.target.value,
-                                        //     })
-                                        // }
-                                        />
-                                    </SelectTrigger>
+						<div className="flex">
+							<div className="w-1/2 flex flex-col pt-6 px-4">
+								<h2 className="font-bold text-lg">Category</h2>
 
-                                    <SelectContent
-                                    value={newCourse.category}
-                                    onChange={(e) =>
-                                        setNewCourse({
-                                            ...newCourse, //copying previous data
-                                            category: e.target.value,
-                                        })
-                                    }
-                                    >
-                                        <SelectItem value="business">Business</SelectItem>
+								<Select
+									value={newCourse.category}
+									onValueChange={(e) =>
+										setNewCourse({
+											...newCourse,
+											category: e,
+										})
+									}>
+									<SelectTrigger className="">
+										<SelectValue
+											placeholder="Select here"
+											// value={newCourse.category}
+											// onChange={(e) =>
+											//     setNewCourse({
+											//         ...newCourse, //copying previous data
+											//         category: e.target.value,
+											//     })
+											// }
+										/>
+									</SelectTrigger>
 
-                                        <SelectItem value="web-dev">Web Development</SelectItem>
+									<SelectContent>
+										<SelectItem value="business">Business</SelectItem>
 
-                                        <SelectItem value="python">Python</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                            </div>
-                                
-                            <div className="w-1/2 flex flex-col pt-6 px-4">
-                                <h2 className="font-bold text-lg">
-                                    Level
-                                </h2>
+										<SelectItem value="web-dev">Web Development</SelectItem>
 
-                                <Select>
-                                    <SelectTrigger className="">
-                                        <SelectValue 
-                                        placeholder="Select here"
-                                        // value={newCourse.level}
-                                        // onChange={(e) =>
-                                        //     setNewCourse({
-                                        //         ...newCourse, //copying previous data
-                                        //         level: e.target.value,
-                                        //     })
-                                        // } 
-                                        />
-                                    </SelectTrigger>
+										<SelectItem value="python">Python</SelectItem>
+									</SelectContent>
+								</Select>
+							</div>
 
-                                    <SelectContent
-                                    value={newCourse.level}
-                                    onChange={(e) =>
-                                        setNewCourse({
-                                            ...newCourse, //copying previous data
-                                            level: e.target.value,
-                                        })
-                                    } 
-                                    >
-                                        <SelectItem value="beginner">Beginner</SelectItem>
+							<div className="w-1/2 flex flex-col pt-6 px-4">
+								<h2 className="font-bold text-lg">Level</h2>
 
-                                        <SelectItem value="intermediate">Intermediate</SelectItem>
+								<Select
+									value={newCourse.level}
+									onValueChange={(e) =>
+										setNewCourse({
+											...newCourse,
+											level: e,
+										})
+									}>
+									<SelectTrigger className="">
+										<SelectValue placeholder="Select here" />
+									</SelectTrigger>
 
-                                        <SelectItem value="expert">Expert</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                            </div>
-                        </div>
+									<SelectContent>
+										<SelectItem value="beginner">Beginner</SelectItem>
 
-                        <div className="flex flex-col pt-6 px-4">
-                            <h2 className="font-bold text-lg">
-                                Description
-                            </h2>
+										<SelectItem value="intermediate">Intermediate</SelectItem>
 
-                            <div className="flex flex-col space-y-4">
-                                <div className="flex flex-col pt-2 space-y-2">
-                                    <h3 className="font-bold text-base">
-                                        Introduction
-                                    </h3>
+										<SelectItem value="expert">Expert</SelectItem>
+									</SelectContent>
+								</Select>
+							</div>
+						</div>
 
-                                    <Textarea 
-                                    placeholder="Type your description here." 
-                                    value={newCourse.introduction}
-                                    onChange={(e) =>
-                                        setNewCourse({
-                                            ...newCourse, //copying previous data
-                                            introduction: e.target.value,
-                                        })
-                                    }
-                                    />
-                                </div>
+						<div className="flex flex-col pt-6 px-4">
+							<h2 className="font-bold text-lg">Description</h2>
 
-                                <div className="flex flex-col pt-2 space-y-2">
-                                    <h3 className="font-bold text-base">
-                                        Requirement and Materials
-                                    </h3>
+							<div className="flex flex-col space-y-4">
+								<div className="flex flex-col pt-2 space-y-2">
+									<h3 className="font-bold text-base">Introduction</h3>
 
-                                    <Textarea 
-                                    placeholder="Type here." 
-                                    value={newCourse.requirements}
-                                    onChange={(e) =>
-                                        setNewCourse({
-                                            ...newCourse, //copying previous data
-                                            requirements: e.target.value,
-                                        })
-                                    }
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+									<Textarea
+										placeholder="Type your description here."
+										value={newCourse.introduction}
+										onChange={(e) =>
+											setNewCourse({
+												...newCourse, //copying previous data
+												introduction: e.target.value,
+											})
+										}
+									/>
+								</div>
 
-                <div className="w-1/2">
-                    <div className="flex flex-col pt-14 px-4">
-                        <h2 className="font-bold text-lg">
-                            Course Thumbnail
-                        </h2>
+								<div className="flex flex-col pt-2 space-y-2">
+									<h3 className="font-bold text-base">
+										Requirement and Materials
+									</h3>
 
-                        <Input type="file" placeholder="Drag or upload here" />
-                    </div>
-                </div>
-            </div>
+									<Textarea
+										placeholder="Type here."
+										value={newCourse.requirements}
+										onChange={(e) =>
+											setNewCourse({
+												...newCourse, //copying previous data
+												requirements: e.target.value,
+											})
+										}
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-            <div className="flex justify-end space-x-2">
-                <Link href='/become-trainer/trainer-details'>
-                    <Button className="w-48">
-                        Previous
-                    </Button>
-                </Link>
+				<div className="w-1/2">
+					<div className="flex flex-col pt-14 px-4">
+						<h2 className="font-bold text-lg">Course Thumbnail</h2>
 
-                <Button 
-                className="w-48"
-                onClick={() => addNewCourseToDB()}
-                >
-                    Submit
-                </Button>
-            </div>
-        </div>
-    );
+						<Input type="file" placeholder="Drag or upload here" />
+					</div>
+				</div>
+			</div>
+
+			<div className="flex justify-end space-x-2">
+				<Link href="/become-trainer/trainer-details">
+					<Button className="w-48">Previous</Button>
+				</Link>
+
+				<Button className="w-48" onClick={() => addNewCourseToDB()}>
+					Submit
+				</Button>
+			</div>
+		</div>
+	);
 }
-
