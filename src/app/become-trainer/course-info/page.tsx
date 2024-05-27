@@ -204,29 +204,22 @@ export default function CourseInfoInput(){
                                     Category
                                 </h2>
 
-                                <Select>
+                                <Select
+                                value={newCourse.category}
+                                onValueChange={(e) =>
+                                    setNewCourse({
+                                        ...newCourse, //copying previous data
+                                        category: e,
+                                    })
+                                }
+                                >
                                     <SelectTrigger className="">
                                         <SelectValue 
                                         placeholder="Select here" 
-                                        // value={newCourse.category}
-                                        // onChange={(e) =>
-                                        //     setNewCourse({
-                                        //         ...newCourse, //copying previous data
-                                        //         category: e.target.value,
-                                        //     })
-                                        // }
                                         />
                                     </SelectTrigger>
 
-                                    <SelectContent
-                                    value={newCourse.category}
-                                    onChange={(e) =>
-                                        setNewCourse({
-                                            ...newCourse, //copying previous data
-                                            category: e.target.value,
-                                        })
-                                    }
-                                    >
+                                    <SelectContent>
                                         <SelectItem value="business">Business</SelectItem>
 
                                         <SelectItem value="web-dev">Web Development</SelectItem>
@@ -241,29 +234,22 @@ export default function CourseInfoInput(){
                                     Level
                                 </h2>
 
-                                <Select>
+                                <Select
+                                value={newCourse.level}
+                                onValueChange={(e) =>
+                                    setNewCourse({
+                                        ...newCourse, //copying previous data
+                                        level: e,
+                                    })
+                                } 
+                                >
                                     <SelectTrigger className="">
                                         <SelectValue 
                                         placeholder="Select here"
-                                        // value={newCourse.level}
-                                        // onChange={(e) =>
-                                        //     setNewCourse({
-                                        //         ...newCourse, //copying previous data
-                                        //         level: e.target.value,
-                                        //     })
-                                        // } 
                                         />
                                     </SelectTrigger>
 
-                                    <SelectContent
-                                    value={newCourse.level}
-                                    onChange={(e) =>
-                                        setNewCourse({
-                                            ...newCourse, //copying previous data
-                                            level: e.target.value,
-                                        })
-                                    } 
-                                    >
+                                    <SelectContent>
                                         <SelectItem value="beginner">Beginner</SelectItem>
 
                                         <SelectItem value="intermediate">Intermediate</SelectItem>
