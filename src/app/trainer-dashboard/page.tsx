@@ -138,12 +138,12 @@ export default function TrainerDashboard(){
                                             </div>
 
                                             <div className="flex p-2">
-                                                <div className="flex justify-center items-center w-1/3 p-2">
-                                                    <img src="profile-pic.png" alt="" className="w-1/2"/>
+                                                <div className="flex justify-center w-1/3 px-2 pt-2">
+                                                    <img src="profile-pic.png" alt="" className="size-16"/>
                                                 </div>
 
                                                 <div className="p-2">
-                                                    <p className="font-bold text-lg">
+                                                    <p className="font-bold text-lg text-clip">
                                                         {detail.title}
                                                     </p>
 
