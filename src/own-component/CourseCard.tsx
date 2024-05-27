@@ -18,12 +18,12 @@ export default function CourseCard(){
             {course.map((details, index) =>(
                 <li key={index} className="">
                     <div className="h-2/3">
-                        <img src="course-thumbnail.png" alt="" className=""/>
+                        <img src="course-thumbnail.png" alt="" className="w-full"/>
                     </div>
 
                     <div className="flex p-2">
                         <div className="flex justify-center items-center w-1/3 p-2">
-                            <img src="profile-pic.png" alt="" className="w-full"/>
+                            <img src="profile-pic.png" alt="" className="w-20 h-20"/>
                         </div>
 
                         <div className="p-4">
