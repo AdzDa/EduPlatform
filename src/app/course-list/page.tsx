@@ -31,9 +31,7 @@ export default function CourseFull(){
                         <SortBy/>
                     </div>
                     
-                    <Link href='/course-page'>
-                        <CourseList/>
-                    </Link>
+                    <CourseList/>
                     <CourseList/>
                     <CourseList/>
                     <CourseList/>

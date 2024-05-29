@@ -63,9 +63,11 @@ export default function CategoryList(){
                             See more
                         </p>
 
-                        <Button variant="outline" size="icon">
-                            <ChevronRight className="h-4 w-4" />
-                        </Button>
+                        <Link href='/course-list'>
+                            <Button variant="outline" size="icon">
+                                <ChevronRight className="h-4 w-4" />
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             
@@ -102,9 +104,11 @@ export default function CategoryList(){
                             See more
                         </p>
 
-                        <Button variant="outline" size="icon">
-                            <ChevronRight className="h-4 w-4" />
-                        </Button>
+                        <Link href='/course-list'>
+                            <Button variant="outline" size="icon">
+                                <ChevronRight className="h-4 w-4" />
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             

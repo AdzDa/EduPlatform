@@ -16,7 +16,8 @@ export default function CourseCard(){
     return (
         <ul className="flex flex-col hover:border-gray-400, hover:border-2">
             {course.map((details, index) =>(
-                <li key={index} className="">
+                <Link href='/course-page'>
+                    <li key={index} className="">
                     <div className="h-2/3">
                         <img src="course-thumbnail.png" alt="" className="w-full"/>
                     </div>
@@ -45,7 +46,10 @@ export default function CourseCard(){
                         </div>
                     </div>
                 </li>
+                </Link>
             ))}
         </ul>
     );
 }
+
+
