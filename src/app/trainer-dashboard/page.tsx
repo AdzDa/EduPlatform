@@ -26,37 +26,37 @@ export default function TrainerDashboard() {
 		}
 	};
 
-	const getLoggedInUser = async () => {
-		const {
-			data: { user },
-		} = await supabase.auth.getUser();
-		if (!user) return;
+	// const getLoggedInUser = async () => {
+	// 	const {
+	// 		data: { user },
+	// 	} = await supabase.auth.getUser();
+	// 	if (!user) return;
 
-		// console.log(user);
+	// 	// console.log(user);
 
-		const { data: trainer } = await supabase
-			.from('trainers')
-			.select()
-			.eq('user_id', user.id)
-			.single();
+	// 	const { data: trainer } = await supabase
+	// 		.from('trainers')
+	// 		.select()
+	// 		.eq('user_id', user.id)
+	// 		.single();
 
-		const { data: course } = await supabase
-			.from('courses')
-			.select()
-			.eq('trainer_id', trainer.id);
+	// 	const { data: course } = await supabase
+	// 		.from('courses')
+	// 		.select()
+	// 		.eq('trainer_id', trainer.id);
 
-		console.log(course);
+	// 	console.log(course);
 
-		if (trainer === null) {
-			window.location.href = '/become-trainer/trainer-details';
-		} else {
-			setUserName(trainer.name);
-		}
-	};
+	// 	if (trainer === null) {
+	// 		window.location.href = '/become-trainer/trainer-details';
+	// 	} else {
+	// 		setUserName(trainer.name);
+	// 	}
+	// };
 
 	useEffect(() => {
 		getCourseFromDB();
-		getLoggedInUser();
+		// getLoggedInUser();
 	}, []);
 
 	return (
@@ -172,25 +172,6 @@ export default function TrainerDashboard() {
 									</li>
 								))}
 							</ul>
-
-							{/* <div className="bg-blue-100 grid grid-cols-4 gap-2 mx-5">
-                                    {courseList.map((detail, index) => (
-                                        <div 
-                                        key={index}
-                                        className=""
-                                        >
-                                            <p>
-                                                {detail.title}
-                                            </p>
-                                            <p>
-                                                By {detail.trainer}
-                                            </p>
-                                            <p>
-                                                {detail.price}
-                                            </p>
-                                        </div>
-                                    ))}
-                                </div> */}
 						</TabsContent>
 					</Tabs>
 				</div>

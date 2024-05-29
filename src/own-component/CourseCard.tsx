@@ -23,7 +23,7 @@ export default function CourseCard(){
 
                     <div className="flex p-2">
                         <div className="flex justify-center items-center w-1/3 p-2">
-                            <img src="profile-pic.png" alt="" className="w-20 h-20"/>
+                            <img src="profile-pic.png" alt="" className="w-16 h-16"/>
                         </div>
 
                         <div className="p-4">
